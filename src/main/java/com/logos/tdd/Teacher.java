@@ -6,7 +6,7 @@ import org.junit.platform.commons.util.StringUtils;
 public class Teacher {
 
   public static void main(String[] args) {
-    IntStream.range(1, Integer.MAX_VALUE).forEach(i -> System.out.println(fizzBuzz(i)));
+    IntStream.range(1, 10000).forEach(i -> System.out.println(fizzBuzz(i)));
   }
 
   protected static String fizzBuzz(Integer index) {
