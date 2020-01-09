@@ -9,31 +9,31 @@ public class Teacher {
     IntStream.range(1, Integer.MAX_VALUE).forEach(i -> System.out.println(fizzBuzz(i)));
   }
 
-  protected static String fizzBuzz(Integer i) {
-    if (i.toString().contains("7")) {
-      return getSpecialRuleOfMultipleForHave7(i);
+  protected static String fizzBuzz(Integer index) {
+    if (index.toString().contains("7")) {
+      return getSpecialRuleOfMultipleForHave7(index);
     }
-    if (i.toString().contains("5")) {
-      return getSpecialRuleOfMultipleForHave5(i);
+    if (index.toString().contains("5")) {
+      return getSpecialRuleOfMultipleForHave5(index);
     }
-    if (i.toString().contains("3")) {
+    if (index.toString().contains("3")) {
       return getRuleForHave3();
     }
-    return getSpecialRuleOfMultiple(i);
+    return getSpecialRuleOfMultiple(index);
   }
 
-  private static String getSpecialRuleOfMultipleForHave7(Integer i) {
-    if (i.toString().contains("3")){
-     return getRuleForHave3();
+  private static String getSpecialRuleOfMultipleForHave7(Integer index) {
+    if (index.toString().contains("3")) {
+      return getRuleForHave3();
     }
     String result = "";
-    if (isMultipleOfNumber(i, 3)) {
+    if (isNumberMultipleOfOtherNumber(index, 3)) {
       result += "Fizz";
     }
-    if (isMultipleOfNumber(i, 7)) {
+    if (isNumberMultipleOfOtherNumber(index, 7)) {
       result += "Whizz";
     }
-    result = normalRule(i, result);
+    result = toOrderToStringRole(index, result);
     return result;
   }
 
@@ -41,41 +41,41 @@ public class Teacher {
     return "Fizz";
   }
 
-  private static String getSpecialRuleOfMultipleForHave5(Integer i) {
+  private static String getSpecialRuleOfMultipleForHave5(Integer index) {
     String result = "";
-    if (isMultipleOfNumber(i, 5)) {
+    if (isNumberMultipleOfOtherNumber(index, 5)) {
       result += "Buzz";
     }
-    if (isMultipleOfNumber(i, 7)) {
+    if (isNumberMultipleOfOtherNumber(index, 7)) {
       result += "Whizz";
     }
-    result = normalRule(i, result);
+    result = toOrderToStringRole(index, result);
     return result;
   }
 
-  private static String getSpecialRuleOfMultiple(Integer i) {
+  private static String getSpecialRuleOfMultiple(Integer index) {
     String result = "";
-    if (isMultipleOfNumber(i, 3)) {
+    if (isNumberMultipleOfOtherNumber(index, 3)) {
       result += "Fizz";
     }
-    if (isMultipleOfNumber(i, 5)) {
+    if (isNumberMultipleOfOtherNumber(index, 5)) {
       result += "Buzz";
     }
-    if (isMultipleOfNumber(i, 7)) {
+    if (isNumberMultipleOfOtherNumber(index, 7)) {
       result += "Whizz";
     }
-    result = normalRule(i, result);
+    result = toOrderToStringRole(index, result);
     return result;
   }
 
-  private static String normalRule(Integer i, String result) {
+  private static String toOrderToStringRole(Integer order, String result) {
     if (StringUtils.isBlank(result)) {
-      result = i.toString();
+      result = order.toString();
     }
     return result;
   }
 
-  private static boolean isMultipleOfNumber(Integer target, Integer number) {
-    return target % number == 0;
+  private static boolean isNumberMultipleOfOtherNumber(Integer number, Integer otherNumber) {
+    return number % otherNumber == 0;
   }
 }
